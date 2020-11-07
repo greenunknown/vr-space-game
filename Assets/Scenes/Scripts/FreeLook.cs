@@ -30,7 +30,7 @@ public class FreeLook : MonoBehaviour
         // if (Input.GetKey(KeyCode.LeftAlt)) {
         if (Input.GetKey(KeyCode.Tab)) {
             if(!freelook) {
-                startRotation = transform.rotation;
+                startRotation = transform.parent.rotation;
                 Debug.Log("startRotation: " + startRotation);
                 freelook = true;
             }
