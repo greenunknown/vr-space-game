@@ -27,6 +27,7 @@ public class ShipController : MonoBehaviour
     }
 
     // Update is called once per frame
+    // void FixedUpdate()
     void Update()
     {
         lookInput.x = Input.mousePosition.x;
@@ -38,8 +39,12 @@ public class ShipController : MonoBehaviour
         mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f); // Make max value <= 1
 
         rollInput = Mathf.Lerp(rollInput, Input.GetAxisRaw("Roll"), rollAcceleration * Time.deltaTime);
-
-        transform.Rotate(-mouseDistance.y * lookRateSpeed * Time.deltaTime, mouseDistance.x * lookRateSpeed * Time.deltaTime, rollInput * rollSpeed * Time.deltaTime, Space.Self);
+        if ((Input.GetKey(KeyCode.Tab))) {
+            Debug.Log("Entering Freelook! No rolling!");
+        } else {
+            transform.Rotate(-mouseDistance.y * lookRateSpeed * Time.deltaTime, mouseDistance.x * lookRateSpeed * Time.deltaTime, rollInput * rollSpeed * Time.deltaTime, Space.Self);
+        }
+        
 
         activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, Input.GetAxisRaw("Vertical") * forwardSpeed, forwardAcceleration * Time.deltaTime);
         activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxisRaw("Horizontal") * strafeSpeed, strafeAcceleration * Time.deltaTime);
