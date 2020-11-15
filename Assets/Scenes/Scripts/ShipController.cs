@@ -16,6 +16,8 @@ public class ShipController : MonoBehaviour
     private float rollInput;
     public float rollSpeed = 90f, rollAcceleration = 3.5f;
 
+    public Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,8 @@ public class ShipController : MonoBehaviour
         } else {
             transform.Rotate(-mouseDistance.y * lookRateSpeed * Time.deltaTime, mouseDistance.x * lookRateSpeed * Time.deltaTime, rollInput * rollSpeed * Time.deltaTime, Space.Self);
         }
+
+
         
 
         activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, Input.GetAxisRaw("Vertical") * forwardSpeed, forwardAcceleration * Time.deltaTime);
@@ -52,5 +56,14 @@ public class ShipController : MonoBehaviour
 
         transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) + (transform.up * activeHoverSpeed * Time.deltaTime);
+    }
+
+    void FixedUpdate() {
+        if (Input.GetKey(KeyCode.G))
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            Debug.Log("EMERGENCY STOP!");
+        }
     }
 }
