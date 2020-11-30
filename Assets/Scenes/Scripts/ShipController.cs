@@ -40,9 +40,12 @@ public class ShipController : MonoBehaviour
         //Debug.Log(mouseDistance);
 
         rollInput = Mathf.Lerp(rollInput, Input.GetAxisRaw("Roll"), rollAcceleration * Time.deltaTime);
-        if ((Input.GetKey(KeyCode.Tab))) {
+        if ((Input.GetKey(KeyCode.Tab))) 
+        {
             Debug.Log("Entering Freelook! No rolling!");
-        } else {
+        } 
+        else 
+        {
             //transform.Rotate(-mouseDistance.y * lookRateSpeed * Time.deltaTime, mouseDistance.x * lookRateSpeed * Time.deltaTime, rollInput * rollSpeed * Time.deltaTime, Space.Self);
         }
 
@@ -57,5 +60,11 @@ public class ShipController : MonoBehaviour
     public void tilt(Vector2 direction)
     {
         transform.Rotate(-direction.y * lookRateSpeed * Time.deltaTime, direction.x * lookRateSpeed * Time.deltaTime, 0);
+    }
+
+    public void thrust(float level)
+    {
+        activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, level * forwardSpeed, forwardAcceleration * Time.deltaTime);
+        transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
     }
 }

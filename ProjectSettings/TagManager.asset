@@ -9,6 +9,10 @@ TagManager:
   - projectile
   - FxTemporaire
   - PlayerHand
+  - Reverse
+  - Neutral
+  - Slow
+  - Fast
   layers:
   - Default
   - TransparentFX
