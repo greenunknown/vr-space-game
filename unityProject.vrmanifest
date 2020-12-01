@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.hoopflighttest.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "D:\\school\\cs\\410-vr\\spaceSim\\vr-space-game-novr\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Hoop Flight Test [Testing]"
+        }
+      }
+    }
+  ]
+}

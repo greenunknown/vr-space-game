@@ -5,6 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - hoop
+<<<<<<< HEAD
+=======
+  - Fire
+  - projectile
+  - FxTemporaire
+  - PlayerHand
+  - Reverse
+  - Neutral
+  - Slow
+  - Fast
+>>>>>>> origin/joystick
   layers:
   - Default
   - TransparentFX
