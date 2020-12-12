@@ -37,12 +37,6 @@ public class ShipController : MonoBehaviour
         mouseDistance.y = (lookInput.y - screenCenter.y) / screenCenter.y;
 
         mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f); // Make max value <= 1
-        // rollInput = Mathf.Lerp(rollInput, Input.GetAxisRaw("Roll"), rollAcceleration * Time.deltaTime);
-        // if ((Input.GetKey(KeyCode.Tab))) {
-        //     Debug.Log("Entering Freelook! No rolling!");
-        // } else {
-        //     transform.Rotate(-mouseDistance.y * lookRateSpeed * Time.deltaTime, mouseDistance.x * lookRateSpeed * Time.deltaTime, rollInput * rollSpeed * Time.deltaTime, Space.Self);
-        // }
         //Debug.Log(mouseDistance);
 
         rollInput = Mathf.Lerp(rollInput, Input.GetAxisRaw("Roll"), rollAcceleration * Time.deltaTime);
@@ -55,6 +49,7 @@ public class ShipController : MonoBehaviour
             //transform.Rotate(-mouseDistance.y * lookRateSpeed * Time.deltaTime, mouseDistance.x * lookRateSpeed * Time.deltaTime, rollInput * rollSpeed * Time.deltaTime, Space.Self);
         }
 
+
         activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, Input.GetAxisRaw("Vertical") * forwardSpeed, forwardAcceleration * Time.deltaTime);
         activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxisRaw("Horizontal") * strafeSpeed, strafeAcceleration * Time.deltaTime);
         activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Hover") * hoverSpeed, hoverAcceleration * Time.deltaTime);
@@ -62,7 +57,6 @@ public class ShipController : MonoBehaviour
         transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) + (transform.up * activeHoverSpeed * Time.deltaTime);
     }
-
     public void tilt(Vector2 direction)
     {
         transform.Rotate(-direction.y * lookRateSpeed * Time.deltaTime, direction.x * lookRateSpeed * Time.deltaTime, 0);
